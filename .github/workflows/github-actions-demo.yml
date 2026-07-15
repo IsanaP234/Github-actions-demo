@@ -5,8 +5,7 @@ on: [push]
 jobs:
   build:
     runs-on: self-hosted
-    container:
-      image: ubuntu:20.04
+
 
     strategy:
       matrix:
@@ -14,10 +13,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ matrix.python-version }}
+    # - name: Set up Python
+    #   uses: actions/setup-python@v2
+    #   with:
+    #     python-version: ${{ matrix.python-version }}
+    - name: Run Python Script
+      run: python3.8 my_script.py
 
     - name: Install dependencies
       run: |
